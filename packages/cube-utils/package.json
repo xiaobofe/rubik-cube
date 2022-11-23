@@ -1,0 +1,22 @@
+{
+  "name": "cube-utils",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "yanxiaobo <xiaobo.yan@se.com>",
+  "homepage": "",
+  "license": "ISC",
+  "main": "lib/cube-utils.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "https://iservice.schneider-electric.cn/nexus/repository/npm-public-ds/"
+  },
+  "scripts": {
+    "test": "node ./__tests__/cube-utils.test.js"
+  }
+}
