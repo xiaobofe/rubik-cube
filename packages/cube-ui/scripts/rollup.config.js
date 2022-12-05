@@ -1,13 +1,22 @@
 const resolve = require("@rollup/plugin-node-resolve");
 const commonjs = require("@rollup/plugin-commonjs");
 const typescript = require("@rollup/plugin-typescript");
-const { terser } = require("rollup-plugin-terser");
-const postcss = require("rollup-plugin-postcss");
+// const postcss = require("rollup-plugin-postcss");
 const progress = require("rollup-plugin-progress");
+const babel = require("rollup-plugin-babel");
+// const resolvePlugin = require("rollup-plugin-node-resolve");
+const { eslint } = require("rollup-plugin-eslint");
+const { terser } = require("rollup-plugin-terser");
 
 const { entryJs, packages, externals } = require("./file");
 const packageJson = require("../package.json");
 
+/**
+ * 打包成为cjs或esm类型文件
+ * @param {*} file  
+ * @param {*} name 
+ * @returns 
+ */
 function createRollupConfig(file, name) {
   const output = [
     {
@@ -42,10 +51,11 @@ function createRollupConfig(file, name) {
     //   url({
     //     limit: 10 * 1024,
     //   }),
+    // resolvePlugin()
     resolve(),
     commonjs(),
     typescript({ tsconfig: "./tsconfig.json" }),
-    postcss(),
+    // postcss(),
     progress(),
   ];
 
@@ -57,36 +67,35 @@ function createRollupConfig(file, name) {
   };
 }
 
-const buildPackages = [];
+
+function createDistRollupConfig() {
+  return {
+    input: "src/index.tsx",
+    output: {
+      file: `dist/cube-ui.js`,
+      format: "umd",
+      name: "cube-ui",
+    },
+    external: ["react", "antd"],
+    plugins: [
+      resolve(),
+      commonjs(),
+      typescript({ tsconfig: "./tsconfig.json" }),
+      // postcss(),
+      babel({
+        exclude: "node_modules/**"
+      }),
+      progress(),
+      // terser()
+    ],
+  }
+}
+
+const buildPackages = [createDistRollupConfig()];
 for (let name in packages) {
   const file = packages[name];
   buildPackages.push(createRollupConfig(file, name));
 }
 
 module.exports = buildPackages;
-// module.exports = {
-//   input: "src/index.tsx",
-//   output: [
-//     {
-//       file: packageJson.main,
-//       format: "cjs",
-//       sourcemap: true,
-//       name: "react-lib",
-//     },
-//     {
-//       file: packageJson.module,
-//       format: "esm",
-//       sourcemap: true,
-//     },
-//   ],
-//   external: ["lodash", "react", "antd"],
-//   plugins: [
-//     // external(),
-//     resolve(),
-//     commonjs(),
-//     typescript({ tsconfig: "./tsconfig.json" }),
-//     postcss(),
-//     progress(),
-//     // terser()
-//   ],
-// };
+
