@@ -1,0 +1,9 @@
+node_modules/*
+.eslintrc.js
+package-lock.json
+package.json
+es/*
+lib/*
+docs-dist/*
+src/.umi/*
+src/.umi-production/*
