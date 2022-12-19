@@ -1,0 +1,52 @@
+.cube-column {
+  &__cascader {
+    &-content {
+      display: flex;
+      width: 390px;
+      max-height: 300px;
+    }
+
+    &-menu {
+      width: 50%;
+    }
+
+    &-menu_item {
+      height: 32px !important;
+      margin-bottom: 0 !important;
+      padding: 0 12px !important;
+      line-height: 32px !important;
+
+      .ant-checkbox-wrapper {
+        margin-right: 5px;
+      }
+    }
+
+    &-menu_left {
+      .ant-menu-title-content {
+        display: flex;
+        justify-content: space-between;
+        line-height: 32px;
+      }
+
+      .anticon-right {
+        margin-left: 2px;
+        font-style: normal;
+        line-height: 32px;
+      }
+    }
+
+    &-menu_right {
+      max-height: 300px;
+      overflow-y: auto;
+    }
+
+    &-footer {
+      display: flex;
+      justify-content: space-between;
+      padding: 7px 8px 7px 3px;
+      overflow: hidden;
+      background-color: inherit;
+      border-top: 1px solid #e6e6e6;
+    }
+  }
+}
