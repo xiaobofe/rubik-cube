@@ -3,6 +3,8 @@ src/
 build/
 __tests__/
 node_modules/
+docs/
+docs-dist/
 
 # 日志文件
 npm-debug.log*

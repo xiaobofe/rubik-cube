@@ -14,7 +14,7 @@ group:
 
 ```tsx
 import React from 'react';
-import { Table } from 'cube-ui';
+import { Table } from '@rubic/cube-ui';
 
 interface DataType {
   key: React.Key;

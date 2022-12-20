@@ -10,34 +10,34 @@ type Theme = 'light' | 'dark';
  * @returns {string}
  */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const hex2rgb = (hex: string, weight: number) => {
-    // 十六进制颜色值的正则表达式
-    // eslint-disable-next-line prefer-regex-literals
-    const reg = new RegExp('^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$');
-    //  16进制颜色转为RGB格式
-    let color = hex ? hex.toLowerCase() : hex;
-    if (color && reg.test(color)) {
-        if (color.length === 4) {
-            let colorNew = '#';
-            for (let i = 1; i < 4; i += 1) {
-                colorNew += color.slice(i, i + 1).concat(color.slice(i, i + 1));
-            }
-            color = colorNew;
-        }
-        //  处理六位的颜色值
-        const colorChange = [];
-        for (let i = 1; i < 7; i += 2) {
-            colorChange.push(parseInt(`0x${color.slice(i, i + 2)}`, 10));
-        }
+// const hex2rgb = (hex: string, weight: number) => {
+//     // 十六进制颜色值的正则表达式
+//     // eslint-disable-next-line prefer-regex-literals
+//     const reg = new RegExp('^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$');
+//     //  16进制颜色转为RGB格式
+//     let color = hex ? hex.toLowerCase() : hex;
+//     if (color && reg.test(color)) {
+//         if (color.length === 4) {
+//             let colorNew = '#';
+//             for (let i = 1; i < 4; i += 1) {
+//                 colorNew += color.slice(i, i + 1).concat(color.slice(i, i + 1));
+//             }
+//             color = colorNew;
+//         }
+//         //  处理六位的颜色值
+//         const colorChange = [];
+//         for (let i = 1; i < 7; i += 2) {
+//             colorChange.push(parseInt(`0x${color.slice(i, i + 2)}`, 10));
+//         }
 
-        if (weight) {
-            return `rgba(${colorChange.join(',')},${weight})`;
-        }
+//         if (weight) {
+//             return `rgba(${colorChange.join(',')},${weight})`;
+//         }
 
-        return colorChange.join(',');
-    }
-    return color;
-};
+//         return colorChange.join(',');
+//     }
+//     return color;
+// };
 
 export function getCssVariables(theme?: Theme) {
     const color = theme ? themeColors[theme] : themeColors.light;
