@@ -1,21 +1,23 @@
-# 忽略目录
-src/
-build/
-__tests__/
-node_modules/
-docs/
-docs-dist/
+# # 忽略目录
+# src/
+# build/
+# __tests__/
+# node_modules/
+# docs/
+# docs-dist/
 
-# 日志文件
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# # 日志文件
+# npm-debug.log*
+# yarn-debug.log*
+# yarn-error.log*
 
-# 编辑器缓存文件
-.idea
-.vscode
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw*
+# # 编辑器缓存文件
+# .idea
+# .vscode
+# *.suo
+# *.ntvs*
+# *.njsproj
+# *.sln
+# *.sw*
+
+~*
